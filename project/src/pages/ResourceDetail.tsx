@@ -46,9 +46,11 @@ export default function ResourceDetail() {
     );
   }
 
-  const downloadUrl =
-    resource.fileUrl ||
-    (resource.filePath ? resource.filePath : '');
+const backendUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/api$/, '');
+
+const downloadUrl =
+  resource.fileUrl ||
+  (resource.filePath ? `${backendUrl}${resource.filePath}` : '');
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
